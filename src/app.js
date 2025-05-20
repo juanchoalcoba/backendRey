@@ -11,7 +11,7 @@ const app = express();
 
 // Configuración de CORS
 app.use(cors({
-  origin: 'http://localhost:5174', // Frontend
+  origin: 'https://front-rey.vercel.app/', // Frontend
   credentials: true // Permite el envío de cookies
 }));
 
