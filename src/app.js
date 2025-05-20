@@ -10,13 +10,15 @@ import authRoutes from '../routes/auth.routes.js';
 const app = express();
 
 // Configuración de CORS
-app.use(cors({
-  origin: 'https://front-rey.vercel.app', // Frontend
-  credentials: true // Permite el envío de cookies
-}));
-
-// ✅ Opcional pero recomendado: responde preflight
-app.options('*', cors());
+const corsOptions = {
+    origin: 'https://front-rey.vercel.app', // La URL de tu frontend en Vercel
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],  // Métodos permitidos
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],  // Cabeceras permitidas
+    optionsSuccessStatus: 204,  // Opcional para manejar preflight exitoso
+  };
+  
+  // Aplica CORS a toda la aplicación
+  app.use(cors(corsOptions));
 
 // Middlewares
 app.use(morgan('dev')); // Logs de peticiones
