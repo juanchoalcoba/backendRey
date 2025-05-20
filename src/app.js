@@ -11,9 +11,12 @@ const app = express();
 
 // Configuración de CORS
 app.use(cors({
-  origin: 'https://front-rey.vercel.app/', // Frontend
+  origin: 'https://front-rey.vercel.app', // Frontend
   credentials: true // Permite el envío de cookies
 }));
+
+// ✅ Opcional pero recomendado: responde preflight
+app.options('*', cors());
 
 // Middlewares
 app.use(morgan('dev')); // Logs de peticiones
